@@ -1,0 +1,22 @@
+{
+    "name": "Axpert Inverter",
+    "version": "0.2.6",
+    "slug": "axpert",
+    "description": "Monitors an axpert inverter",
+    "startup": "application",
+    "boot": "auto",
+    "privileged": ["SYS_RAWIO"],
+    "devices": ["/dev/hidraw0:/dev/hidraw0:rwm"],
+    "options": {
+        "mqtt_server": "core-mosquitto",
+        "mqtt_client_id": "axpert",
+        "mqtt_topic_parallel": "power/axpert",
+        "mqtt_topic": "power/axpert{sn}"
+    },
+    "schema": {
+        "mqtt_server": "str",
+        "mqtt_client_id": "str",
+        "mqtt_topic_parallel": "str",
+        "mqtt_topic": "str"
+    }
+}
