@@ -57,3 +57,10 @@ The values published on 'power/axpert{sn}' are:
 I have 3 inverters in parallel and a raspberry connected to 1 of them with a USB cable . Linux doesn't seem to recognize it as a USB to Serial device and it only shows up as `/dev/hidraw0`.
 
 A description of the serial communication protocol can be found [here](file:///home/freon/Downloads/HS_MS_MSX-Communication%20Protocol-NEW.pdf)
+
+
+### Rules for the HIDRAW device
+
+The Axpert is an HIDRAW device.  It requires the following rule to set up in order to give the active user to access the device:
+
+`echo 'ATTRS{idVendor}=="0665", ATTRS{idProduct}=="5161", SUBSYSTEMS=="usb", ACTION=="add", MODE="0666", GROUP="root", SYMLINK+="hidVoltronic"' > /etc/udev/rules.d/35-voltronic.rules`
