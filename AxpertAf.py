@@ -77,29 +77,6 @@ import time
 # Maak die Axpert se leer oop
 connect()
 
-# Log parameters
-monsterfrekwensie = 30 # [sekondes]
-totalesekondes = 24*60*60 # [sekondes]
+response = na_lynkrag()
 
-
-begintyd = datetime.datetime.now()
-
-# Maak leer oop
-leer = open('Axpert' + str(datetime.date.today()) + '.log', 'w')
-leer.write('Maak nog korrekte opskrifte hier\n')
-
-while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
-    print((datetime.datetime.now() - begintyd).seconds)
-    response = meet_data()
-    teksrespons = response.decode('utf-8')
-    print(teksrespons)
-    
-    # Log data na leer
-    leer.write(str(datetime.datetime.now()) + ',' + teksrespons)
-    leer.write('\n')
-    time.sleep(monsterfrekwensie)
-
-# Maak die Axpert se leer toe
 disconnect()
-# Klaar gemeet
-print('Klaar gemeet')
