@@ -9,9 +9,11 @@ def connect():
     # Assumes that the Axpert has a udev rule defined:
     file = open('/dev/hidVoltronic', 'r+')
     fd = file.fileno()
+    print('connected')
 
 def disconnect():
     file.close()
+    print('disconnected')
 
 def serial_command(command):
     print(command)
