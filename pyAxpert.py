@@ -84,3 +84,11 @@ def modus():
     response = serial_command('QMOD')
     
     return response
+
+
+def toestel_inligting():
+    # Antwoord met 'L' as dit op lynkrag is
+    # en met 'B' as dit op batterykrag is
+    response = serial_command('QPIRI')
+    
+    return response
