@@ -77,3 +77,10 @@ def na_sonkrag():
     response = serial_command('POP01')
     
     return response
+
+def modus():
+    # Antwoord met 'L' as dit op lynkrag is
+    # en met 'B' as dit op batterykrag is
+    response = serial_command('QMOD')
+    
+    return response
