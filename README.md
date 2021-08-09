@@ -1,5 +1,52 @@
+# Axpert Python Log Script
+
+This is a set of functions for logging the Axpert inverter measured data to a text file format.
+
+This data can then be analyzed off-line. 
+
+## Installation
+
+The following steps must be followed in order to install the functions:
+
+The installation is tested on a Raspberry Pi with Raspbian, but should work with some other Linux flavours as well.
+
+- clone the the following repository in a home folder:  
+
+  ```bash
+  git clone https://github.com/Interster/AxpertInverterLogScriptPython.git
+  ```
+
+- install crcmod for python3 
+
+  ```bash
+  sudo pip3 install crcmod
+  ```
+
+- create rules for the Axpert/Voltronic inverter 
+
+  ```bash
+  echo 'ATTRS{idVendor}=="0665", ATTRS{idProduct}=="5161", SUBSYSTEMS=="usb", ACTION=="add", MODE="0666", GROUP="root", SYMLINK+="hidVoltronic"' > /etc/udev/rules.d/35-voltronic.rules
+  ```
+
+- add a time for the logging to begin automatically by editing the cron table and by typing the following in a terminal 
+
+  ```bash
+  crontab -e
+  ```
+
+  Then add the following line to the crontable (This starts logging a 24 hour cycle at 00:00 at night):
+
+  ```bash
+  0 0 * * * python3 /home/AxpertInverterLogScript/AxpertInverterLogScriptPython/LogAxpert.py
+  ```
+
+  Remember to make sure that your path is correct.
+
+
+
+
+
 ![inverters image](https://energypower.gr/wp-content/uploads/2015/12/inverter-axpert-mks-5-kva.jpg)
-================
 
 This is a Hassio addon to monitor [voltronic axpert inverters](http://www.voltronicpower.com/oCart2/index.php?route=product/product&product_id=123) through USB and publish the data as JSON to an MQTT broker. It publishes the data to 2 topics:
 - 'power/axpert' for the parallel data (some of these values seem to be only for the connected inverter even though they are returned by the parallel data command)
