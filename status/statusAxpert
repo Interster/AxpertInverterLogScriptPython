@@ -1,0 +1,29 @@
+#!/bin/bash
+clear
+
+# Kry die dag maand en  jaar van die huidige dag
+NOW=$(date +"%Y-%m-%d")
+DAG=$(date -d "$NOW" '+%d')
+MAAND=$(date -d "$NOW" '+%m')
+JAAR=$(date -d "$NOW" '+%Y')
+
+# Druk die dag maand en jaar
+#echo "Dag: $DAG"
+#echo "Maand: $MAAND"
+#echo "Jaar: $JAAR"
+
+# Maak die naam van die dag se meetleer
+NAAM="Axpert"
+LEER="$NAAM$JAAR""-""$MAAND""-""$DAG.log"
+# Druk die leernaam
+echo "Verwerk die leer:"
+# Skryf leernaam in groen
+echo -e "\e[32m$LEER\e[0m"
+echo
+
+# Verwyder die rommel uit die meetleer en skryf uit na die leer
+# wat python gaan verwerk
+sed '/(2/d' ./$LEER > Axpert.out
+
+# Loop python op die resultaat leer
+python3 statusInverter.py
