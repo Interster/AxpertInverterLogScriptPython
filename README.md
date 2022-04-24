@@ -190,3 +190,60 @@ Regardless of what the device received up to that point `\r` signals to the devi
 
 Once this character is received all input up to that point is taken as the *command* to the device
 
+
+
+## Gebruik van MQTTT
+
+Geleidelike ontwikkeling het getoon dat MQTT heel moontlik die beste rigting is om die Axpert log sagteware te benut.
+
+Hier volg die beskrywing die installasie van 'n broker (die diens) en kliënt van Mosquitto MQT
+
+Verder word die gebruik binne die kode ook beskryf.
+
+### Installasie van MQTT op raspberry pi
+
+Hierdie beskrywing leen baie uit die volgende webbladsy:
+
+http://www.steves-internet-guide.com/install-mosquitto-linux/
+
+
+
+Installeer Mosquitto MQTT op die raspberry pi met die volgende opdrag:
+
+```bash
+sudo apt-get install mosquitto
+```
+
+Begin die diens of "broker" met die volgende opdrag:
+
+stop die broker met die volgende opdrag
+
+```bash
+sudo service mosquitto stop
+```
+
+en begin dit met die volgende opdrag:
+
+```bash
+sudo service mosquitto start
+```
+
+Die volgende opdrag kry die weergawe van mosquitto, maar jy moet die broker eers staak voor jy dit uitvoer:
+
+```bash
+mosquitto -v
+```
+
+
+
+![start-mosquitt-linux](Prente\start-mosquitt-linux.jpg)
+
+Toets of die installasie werk deur die volgende opdrag te gebruik:
+
+```bash
+netstat -at	
+```
+
+Jy behoort die Mosquitto broker te sien loop op port 1883:
+
+![netstamqtt-broker](Prente\netstamqtt-broker.jpg)
