@@ -247,3 +247,10 @@ netstat -at
 Jy behoort die Mosquitto broker te sien loop op port 1883:
 
 ![netstamqtt-broker](Prente\netstamqtt-broker.jpg)
+
+Maak ook seker dat die paho-mqtt client installeer is op die raspberry pi met die volgende opdrag:
+
+```python
+sudo pip3 install paho-mqtt
+```
+
