@@ -1,31 +1,51 @@
-#%%
-# http://www.steves-internet-guide.com/into-mqtt-python-client/
-
-
 import paho.mqtt.client as mqtt #import the client1
 import time
-############
-def on_message(client, userdata, message):
-    print("message received " ,str(message.payload.decode("utf-8")))
-    print("message topic=",message.topic)
-    print("message qos=",message.qos)
-    print("message retain flag=",message.retain)
-########################################
 
+import matplotlib.pyplot as plt
+#import DataPlot and RealtimePlot from the file plot_data.py
+from plot_data import DataPlot, RealtimePlot
 
-#%%
-broker_address="192.168.9.161"
+broker_address="192.168.9.161" 
 #broker_address="iot.eclipse.org"
-print("creating new instance")
-client = mqtt.Client("P1") #create new instance
-client.on_message=on_message #attach function to callback
+
+  
+def on_message(client, userdata, message):
+    boodskap = message.payload.decode("utf-8")
+    print("message received " ,str(boodskap))
+    
+    # plot data
+    global count
+    count+=1
+    data.add(count, int(boodskap), 300)
+    dataPlotting.plot(data)
+    plt.pause(0.001)
+    #print("message topic=",message.topic)
+    #print("message qos=",message.qos)
+    #print("message retain flag=",message.retain)
+
+client = mqtt.Client("P2") #create new instance
 print("connecting to broker")
 client.connect(broker_address) #connect to broker
+
+# Stel plot op
+fig, axes = plt.subplots()
+plt.title('Data from TTN console')
+data = DataPlot()
+dataPlotting= RealtimePlot(axes)
+
+count = 0
+
 client.loop_start() #start the loop
-print("Subscribing to topic","inverter/Opbattery")
-client.subscribe("inverter/Opbattery")
-print("Publishing message to topic","house/bulbs/bulb1")
-client.publish("inverter/Opbattery","AF")
-time.sleep(4) # wait
+
+client.on_message=on_message #attach function to callback
+
+print("Subscribing to topics","son-yskasteTV")
+# Son stelsel met yskaste en TV as hoofverbruikers:
+client.subscribe("son-yskasteTV/inverter/Las drywing")
+
+
+
+time.sleep(100) # wait
 client.loop_stop() #stop the loop
-# %%
+
+
