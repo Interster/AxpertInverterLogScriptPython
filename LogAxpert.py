@@ -1,3 +1,10 @@
+# Te doen:
+# Sit die Axpert serial command in 'n module
+# Maak die Axpert serial command so dat dit foutiewe boodskappe weggooi.
+# Gebruik scheduler om meet taak elke 30 sekondes te doen
+# Breek die meetstring op in getalle en stuur dit na die mqtt broker.
+# Skryf 'n logger vir die mqtt broker wat die mqtt data na 'n leer skryf as daar genoeg data is
+
 import os
 import crcmod
 from binascii import unhexlify
