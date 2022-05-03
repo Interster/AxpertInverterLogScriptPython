@@ -30,4 +30,4 @@ print('PV charing power ' + lysgetalle[19])
 # Druk nou die waarde wat na 'n getal verander is
 print(int(lysgetalle[19]))
 print('AC output active power ' + lysgetalle[5])
-print(int(lysgetalle[19]))
+print(int(lysgetalle[5]))
