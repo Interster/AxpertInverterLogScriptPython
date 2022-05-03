@@ -122,7 +122,7 @@ def onttrek_data():
     #'00000', '110']
     print('PV charging power ' + lysgetalle[19])
     # Druk nou die waarde wat na 'n getal verander is
-    pvchargepower = int(lysgetalle[19]))
+    pvchargepower = int(lysgetalle[19])
     print('AC output active power ' + lysgetalle[5])
     acactivepower = int(lysgetalle[5])
     
