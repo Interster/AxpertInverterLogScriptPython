@@ -79,6 +79,12 @@ def na_lynkrag():
 
 import datetime
 import time
+import paho.mqtt.client as mqtt #import the client1
+
+# Adres van die broker
+broker_address="192.168.9.161" 
+client = mqtt.Client("P1") #create new instance
+client.connect(broker_address) #connect to broker
 
 
 # Maak die Axpert se leer oop
@@ -99,7 +105,10 @@ while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
     print((datetime.datetime.now() - begintyd).seconds)
     response = meet_data()
     teksrespons = response.decode('utf-8')
-    print(teksrespons)
+    #print(teksrespons)
+    
+    lysgetalle = teksrespons.split(' ')
+    client.publish("son-yskasteTV/inverter/Las drywing", int(lysgetalle[5]))#publish
     
     # Log data na leer
     leer.write(str(datetime.datetime.now()) + ',' + teksrespons)
