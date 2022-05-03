@@ -97,8 +97,7 @@ def onttrek_data():
     response = meet_data()
     teksrespons = response.decode('utf-8')
     
-    lysvaninverter = teksrespons.split(',')
-    lysgetalle = lysvaninverter[1].split(' ')
+    lysgetalle = teksrespons.split(' ')
     # Dit gee:
     # Grid voltage, Grid frequency, AC output voltage, AC output frequency,
     #['233.8', '49.9', '233.8', '49.9', '0210', '0138', '004', '418', '52.00', '000', '100', '0048', '0000', '000.0', '00.00', '00001', '00010101', '00', '00', '00000', '110']
