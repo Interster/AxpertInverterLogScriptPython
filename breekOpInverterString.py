@@ -26,7 +26,7 @@ lysgetalle = lysvaninverter[1].split(' ')
 # 19 PV Charging power 1, 20 Device status
 #'00000', '110']
 
-print('PV charing power ' + lysgetalle[19])
+print('PV charging power ' + lysgetalle[19])
 # Druk nou die waarde wat na 'n getal verander is
 print(int(lysgetalle[19]))
 print('AC output active power ' + lysgetalle[5])

@@ -109,6 +109,7 @@ while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
     
     lysgetalle = teksrespons.split(' ')
     client.publish("son-yskasteTV/inverter/Las drywing", int(lysgetalle[5]))#publish
+    client.publish("son-yskasteTV/inverter/PV drywing", int(lysgetalle[19]))#publish
     
     # Log data na leer
     leer.write(str(datetime.datetime.now()) + ',' + teksrespons)

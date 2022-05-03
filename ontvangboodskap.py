@@ -11,7 +11,7 @@ broker_address="192.168.9.161"
   
 def on_message(client, userdata, message):
     boodskap = message.payload.decode("utf-8")
-    print("message received " ,str(boodskap))
+    print("mqtt boodskap: " ,str(boodskap))
     
     # plot data
     global count
@@ -42,10 +42,10 @@ client.on_message=on_message #attach function to callback
 print("Subscribing to topics","son-yskasteTV")
 # Son stelsel met yskaste en TV as hoofverbruikers:
 client.subscribe("son-yskasteTV/inverter/Las drywing")
+client.subscribe("son-yskasteTV/inverter/PV drywing")
 
 
-
-time.sleep(100) # wait
+time.sleep(1000) # wait
 client.loop_stop() #stop the loop
 
 
