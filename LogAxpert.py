@@ -40,16 +40,21 @@ while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
     teksrespons = response.decode('utf-8')
     #print(teksrespons)
     
-    # Stuur hele gemete string
-    client.publish("son-yskasteTV/inverter", teksrespons)#publish
+    if 'NAK' not in response and '(' not in response:
+        # Stuur hele gemete string
+        client.publish("son-yskasteTV/inverter", teksrespons)#publish
+        
+        #lysgetalle = teksrespons.split(' ')
+        #client.publish("son-yskasteTV/inverter/Las drywing", int(lysgetalle[5]))#publish
+        #client.publish("son-yskasteTV/inverter/PV drywing", int(lysgetalle[19]))#publish
+        
+        # Log data na leer
+        leer.write(str(datetime.datetime.now()) + ',' + teksrespons)
+        leer.write('\n')
+    else:
+        print('Fout met lesing \n')
+        print(teksrespons)
     
-    #lysgetalle = teksrespons.split(' ')
-    #client.publish("son-yskasteTV/inverter/Las drywing", int(lysgetalle[5]))#publish
-    #client.publish("son-yskasteTV/inverter/PV drywing", int(lysgetalle[19]))#publish
-    
-    # Log data na leer
-    leer.write(str(datetime.datetime.now()) + ',' + teksrespons)
-    leer.write('\n')
     time.sleep(monsterfrekwensie)
 
 # Maak die Axpert se leer toe
