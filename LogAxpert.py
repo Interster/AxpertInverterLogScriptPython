@@ -40,6 +40,7 @@ while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
     teksrespons = response.decode('utf-8')
     #print(teksrespons)
     
+    # Indien dit hierdie stringe bevat, het foutiewe lesing plaasgevind
     if 'NAK' not in teksrespons and '(' not in teksrespons:
         # Stuur hele gemete string
         client.publish("son-yskasteTV/inverter", teksrespons)#publish
