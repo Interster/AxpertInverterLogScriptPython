@@ -1,3 +1,6 @@
+# https://www.zerynth.com/blog/lora-nodes-real-time-data-plotting-using-python-for-microcontrollers/
+# This code is from the URL above
+
 import time
 import math
 from collections import deque , defaultdict
