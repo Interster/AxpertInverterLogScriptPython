@@ -3,6 +3,7 @@
 import os
 import crcmod
 from binascii import unhexlify
+import time
 
 
 def connect():
