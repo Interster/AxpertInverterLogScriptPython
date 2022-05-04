@@ -40,7 +40,7 @@ while (datetime.datetime.now() - begintyd).seconds < totalesekondes:
     teksrespons = response.decode('utf-8')
     #print(teksrespons)
     
-    if 'NAK' not in response and '(' not in response:
+    if 'NAK' not in teksrespons and '(' not in teksrespons:
         # Stuur hele gemete string
         client.publish("son-yskasteTV/inverter", teksrespons)#publish
         
