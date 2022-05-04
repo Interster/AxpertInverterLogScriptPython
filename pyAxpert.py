@@ -42,10 +42,10 @@ def serial_command(command):
             try:
                 response += os.read(fd, 500)
             except Exception as e:
-                # print("error reading response...: " + str(e))
+                print("error reading response...: " + str(e))
                 time.sleep(0.01)
-            #if len(response) > 0 and response[0] != '(' or 'NAKss' in response:
-            #    raise Exception('NAKss')
+            if len(response) > 0 and response[0] != '(' or 'NAK' in response or '(' in response:
+                raise Exception('NAK')
 
         response = response.rstrip()
         lastI = response.find(b'\r')
@@ -94,9 +94,11 @@ def toestel_inligting():
     return response
 
 def onttrek_data(response):
-    teksrespons = response.decode('utf-8')
+    # Onttrek die AC drywing en die PV drywing en skryf dit uit as getalle
     
-    lysgetalle = teksrespons.split(' ')
+    #teksrespons = response.decode('utf-8')
+    
+    lysgetalle = response.split(' ')
     # Dit gee:
     # Grid voltage, Grid frequency, AC output voltage, AC output frequency,
     #['233.8', '49.9', '233.8', '49.9', '0210', '0138', '004', '418', '52.00', '000', '100', '0048', '0000', '000.0', '00.00', '00001', '00010101', '00', '00', '00000', '110']
