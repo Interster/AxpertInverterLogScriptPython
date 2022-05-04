@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from plot_data import DataPlot, RealtimePlot
 from pyAxpert import *
 
-broker_address="192.168.9.161" 
+broker_address="192.168.9.152" 
 #broker_address="iot.eclipse.org"
 
   
