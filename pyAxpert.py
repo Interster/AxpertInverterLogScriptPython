@@ -93,8 +93,7 @@ def toestel_inligting():
     
     return response
 
-def onttrek_data():
-    response = meet_data()
+def onttrek_data(response):
     teksrespons = response.decode('utf-8')
     
     lysgetalle = teksrespons.split(' ')
