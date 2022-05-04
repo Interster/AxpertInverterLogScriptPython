@@ -54,6 +54,7 @@ def serial_command(command):
         return response
     except Exception as e:
         print('error reading inverter...: ' + str(e))
+        print(response)
         disconnect()
         time.sleep(1)
         connect()
