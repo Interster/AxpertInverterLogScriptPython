@@ -44,7 +44,7 @@ def serial_command(command):
                 response += os.read(fd, 500)
             except Exception as e:
                 print("error reading response...: " + str(e))
-                time.sleep(0.01)
+                time.sleep(1)
             if len(response) > 0 and response[0] != '(' or 'NAK' in response or '(' in response:
                 raise Exception('NAK')
 
@@ -55,7 +55,7 @@ def serial_command(command):
     except Exception as e:
         print('error reading inverter...: ' + str(e))
         disconnect()
-        time.sleep(0.1)
+        time.sleep(1)
         connect()
         return serial_command(command)
     
