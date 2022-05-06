@@ -254,3 +254,14 @@ Maak ook seker dat die paho-mqtt client installeer is op die raspberry pi met di
 sudo pip3 install paho-mqtt
 ```
 
+### Installasie van dash-plotly
+
+Om data te plot is die volgende installasies nodig:
+
+```bash
+pip install dash
+pip install plotly
+```
+
+
+
