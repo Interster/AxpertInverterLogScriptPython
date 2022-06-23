@@ -6,9 +6,11 @@ import math
 from collections import deque , defaultdict
 
 import matplotlib.animation as animation
+
 from matplotlib import pyplot as plt
 
-#import threading
+
+import threading
 
 from random import randint
 

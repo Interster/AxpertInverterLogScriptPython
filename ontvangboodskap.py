@@ -1,7 +1,12 @@
+#%%
+import matplotlib
 import paho.mqtt.client as mqtt #import the client1
 import time
 
+
+%matplotlib inline
 import matplotlib.pyplot as plt
+
 #import DataPlot and RealtimePlot from the file plot_data.py
 from plot_data import DataPlot, RealtimePlot
 from pyAxpert import *
@@ -21,11 +26,14 @@ def on_message(client, userdata, message):
     count+=1
     data.add(count, pvchargepower, acactivepower)
     dataPlotting.plot(data)
-    plt.pause(0.001)
+    plt.show()
+    #plt.pause(0.001)
     #print("message topic=",message.topic)
     #print("message qos=",message.qos)
     #print("message retain flag=",message.retain)
 
+
+#%%
 client = mqtt.Client("P2") #create new instance
 print("connecting to broker")
 client.connect(broker_address) #connect to broker
@@ -53,3 +61,5 @@ time.sleep(1000) # wait
 client.loop_stop() #stop the loop
 
 
+
+# %%
